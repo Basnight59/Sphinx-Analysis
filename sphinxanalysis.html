@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sphinx Analysis | Forensic Research & Historical Documentation</title>
+  <meta name="description" content="Sphinx Analysis is the research arm of SPHINX Global — housing the Digital Apartheid thesis, 400-year evidence chain, and forensic documentation on epistemic exclusion in AI systems." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=IBM+Plex+Mono:wght@300;400;500;700&family=IBM+Plex+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --cream: #F2EDE4;
+      --parchment: #E8DFC8;
+      --ink: #1A1208;
+      --ink-2: #2C1F0A;
+      --gold: #B8882A;
+      --gold-dim: #7A5C1A;
+      --rust: #8B3A1A;
+      --forest: #1A3A2C;
+      --muted: #6B5C3A;
+      --muted-light: #9A8A6A;
+      --white: #FAF8F4;
+      --font-display: 'Cormorant Garamond', Georgia, serif;
+      --font-mono: 'IBM Plex Mono', monospace;
+      --font-body: 'IBM Plex Sans', sans-serif;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { background: var(--white); color: var(--ink); font-family: var(--font-body); overflow-x: hidden; line-height: 1.6; }
+
+    /* NAV */
+    nav { position: fixed; top: 0; width: 100%; z-index: 100; padding: 20px 60px; display: flex; align-items: center; justify-content: space-between; background: rgba(250,248,244,0.97); border-bottom: 1px solid rgba(184,136,42,0.2); }
+    .nav-logo { font-family: var(--font-display); font-size: 22px; font-weight: 600; color: var(--ink); letter-spacing: 0.06em; text-decoration: none; }
+    .nav-logo em { font-style: italic; color: var(--gold); }
+    .nav-links { display: flex; gap: 36px; list-style: none; }
+    .nav-links a { font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); text-decoration: none; transition: color 0.2s; }
+    .nav-links a:hover { color: var(--gold); }
+    .nav-parent { font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted-light); border: 1px solid rgba(184,136,42,0.3); padding: 8px 16px; text-decoration: none; transition: all 0.2s; }
+    .nav-parent:hover { border-color: var(--gold); color: var(--gold); }
+
+    /* HERO */
+    #hero { min-height: 100vh; display: flex; flex-direction: column; justify-content: center; position: relative; padding: 130px 60px 80px; background: var(--ink); overflow: hidden; }
+    .hero-texture { position: absolute; inset: 0; background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23B8882A' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E"); }
+    .hero-glow { position: absolute; width: 600px; height: 600px; background: radial-gradient(circle, rgba(184,136,42,0.08) 0%, transparent 70%); top: 50%; right: 10%; transform: translateY(-50%); }
+    .hero-content { position: relative; z-index: 1; max-width: 800px; }
+    .hero-tag { font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.28em; text-transform: uppercase; color: var(--gold); margin-bottom: 32px; display: flex; align-items: center; gap: 16px; }
+    .hero-tag::before { content: ''; width: 36px; height: 1px; background: var(--gold); opacity: 0.5; }
+    .hero-title { font-family: var(--font-display); font-size: clamp(46px, 6.5vw, 88px); font-weight: 300; color: var(--cream); line-height: 1.0; margin-bottom: 16px; }
+    .hero-title em { font-style: italic; color: var(--gold); }
+    .hero-title strong { font-weight: 700; display: block; }
+    .hero-tagline { font-family: var(--font-display); font-size: clamp(17px, 2vw, 23px); font-weight: 300; font-style: italic; color: rgba(242,237,228,0.6); margin-bottom: 44px; max-width: 560px; line-height: 1.5; }
+    .hero-desc { font-family: var(--font-body); font-size: 15px; line-height: 1.85; color: rgba(242,237,228,0.75); max-width: 620px; margin-bottom: 52px; border-left: 2px solid rgba(184,136,42,0.5); padding-left: 24px; }
+    .hero-actions { display: flex; gap: 18px; flex-wrap: wrap; }
+    .btn-gold { font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--ink); background: var(--gold); padding: 15px 32px; text-decoration: none; transition: all 0.3s; display: inline-block; font-weight: 700; }
+    .btn-gold:hover { background: #D4A040; transform: translateY(-2px); }
+    .btn-outline-light { font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--cream); border: 1px solid rgba(242,237,228,0.25); padding: 15px 32px; text-decoration: none; transition: all 0.3s; display: inline-block; }
+    .btn-outline-light:hover { border-color: var(--gold); color: var(--gold); }
+
+    /* RESEARCH AREAS */
+    #research { background: var(--white); padding: 100px 60px; }
+    .research-header { display: grid; grid-template-columns: 1fr 2fr; gap: 80px; margin-bottom: 72px; align-items: start; }
+    .sec-tag { font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.28em; text-transform: uppercase; color: var(--gold); margin-bottom: 18px; display: flex; align-items: center; gap: 12px; }
+    .sec-tag::before { content: ''; width: 24px; height: 1px; background: var(--gold); }
+    .sec-title { font-family: var(--font-display); font-size: clamp(34px, 4vw, 54px); font-weight: 300; color: var(--ink); line-height: 1.1; margin-bottom: 20px; }
+    .sec-title em { font-style: italic; color: var(--gold); }
+    .sec-body { font-size: 15px; line-height: 1.85; color: var(--muted); max-width: 580px; }
+    .research-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 2px; }
+    .research-card { background: var(--cream); padding: 40px 36px; position: relative; border-bottom: 3px solid transparent; transition: all 0.3s; }
+    .research-card:hover { background: var(--parchment); border-bottom-color: var(--gold); }
+    .research-num { font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.2em; color: var(--gold-dim); margin-bottom: 20px; }
+    .research-title { font-family: var(--font-display); font-size: 26px; font-weight: 600; color: var(--ink); margin-bottom: 8px; line-height: 1.2; }
+    .research-sub { font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold); margin-bottom: 18px; }
+    .research-desc { font-size: 14px; line-height: 1.75; color: var(--muted); }
+    .research-status { position: absolute; top: 24px; right: 24px; font-family: var(--font-mono); font-size: 9px; letter-spacing: 0.15em; padding: 3px 10px; border: 1px solid; }
+    .status-active { color: var(--forest); border-color: rgba(26,58,44,0.3); }
+    .status-wp { color: var(--gold); border-color: rgba(184,136,42,0.3); }
+    .status-pending { color: var(--muted-light); border-color: rgba(154,138,106,0.3); }
+
+    /* EVIDENCE CHAIN */
+    #evidence { background: var(--ink); padding: 100px 60px; }
+    .evidence-header { display: grid; grid-template-columns: 1fr 2fr; gap: 80px; margin-bottom: 72px; align-items: start; }
+    .evidence-header .sec-title { color: var(--cream); }
+    .evidence-header .sec-body { color: rgba(242,237,228,0.65); }
+    .evidence-timeline { display: grid; grid-template-columns: repeat(5, 1fr); gap: 2px; }
+    .evidence-node { background: rgba(255,255,255,0.03); border-top: 2px solid rgba(184,136,42,0.2); padding: 32px 24px; position: relative; transition: all 0.3s; }
+    .evidence-node:hover { background: rgba(184,136,42,0.06); border-top-color: var(--gold); }
+    .ev-year { font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.2em; color: var(--gold); margin-bottom: 16px; }
+    .ev-title { font-family: var(--font-display); font-size: 18px; font-weight: 600; color: var(--cream); margin-bottom: 10px; line-height: 1.25; }
+    .ev-desc { font-size: 12px; line-height: 1.65; color: rgba(242,237,228,0.5); }
+    .ev-sources { font-family: var(--font-mono); font-size: 9px; letter-spacing: 0.1em; color: var(--gold-dim); margin-top: 16px; text-transform: uppercase; }
+
+    /* DIGITAL APARTHEID THESIS */
+    #thesis { background: var(--cream); padding: 100px 60px; }
+    .thesis-layout { display: grid; grid-template-columns: 2fr 1fr; gap: 80px; align-items: start; }
+    .thesis-body { font-size: 16px; line-height: 1.9; color: var(--ink-2); }
+    .thesis-body p { margin-bottom: 20px; }
+    .thesis-pull {
+      font-family: var(--font-display); font-size: clamp(22px, 2.5vw, 32px);
+      font-weight: 300; font-style: italic; color: var(--ink); line-height: 1.45;
+      border-left: 4px solid var(--gold); padding-left: 28px; margin: 40px 0;
+    }
+    .thesis-sidebar { position: sticky; top: 100px; }
+    .thesis-sidebar-title { font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--gold); margin-bottom: 20px; }
+    .data-points { display: flex; flex-direction: column; gap: 20px; }
+    .data-point { padding: 20px; background: var(--white); border-left: 3px solid var(--gold); }
+    .data-number { font-family: var(--font-display); font-size: 40px; font-weight: 700; color: var(--gold); line-height: 1; margin-bottom: 6px; }
+    .data-label { font-size: 12px; line-height: 1.5; color: var(--muted); }
+    .data-source { font-family: var(--font-mono); font-size: 9px; letter-spacing: 0.1em; color: var(--muted-light); margin-top: 4px; }
+
+    /* METHODOLOGY */
+    #methodology { background: var(--parchment); padding: 100px 60px; }
+    .method-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 56px; }
+    .method-card { background: var(--white); padding: 32px 28px; border-top: 3px solid var(--gold); }
+    .method-icon { font-size: 28px; margin-bottom: 16px; }
+    .method-title { font-family: var(--font-display); font-size: 22px; font-weight: 600; color: var(--ink); margin-bottom: 8px; }
+    .method-desc { font-size: 13px; line-height: 1.75; color: var(--muted); }
+
+    /* PUBLICATIONS */
+    #publications { background: var(--white); padding: 100px 60px; }
+    .pub-list { display: flex; flex-direction: column; gap: 0; margin-top: 56px; }
+    .pub-item { display: grid; grid-template-columns: 80px 1fr auto; gap: 32px; align-items: start; padding: 28px 0; border-bottom: 1px solid rgba(184,136,42,0.15); }
+    .pub-item:first-child { border-top: 1px solid rgba(184,136,42,0.15); }
+    .pub-num { font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.2em; color: var(--gold-dim); padding-top: 4px; }
+    .pub-title { font-family: var(--font-display); font-size: 20px; font-weight: 600; color: var(--ink); margin-bottom: 6px; }
+    .pub-meta { font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.12em; color: var(--gold); text-transform: uppercase; margin-bottom: 10px; }
+    .pub-desc { font-size: 13px; line-height: 1.7; color: var(--muted); }
+    .pub-badge { font-family: var(--font-mono); font-size: 9px; letter-spacing: 0.12em; padding: 5px 12px; border: 1px solid; white-space: nowrap; align-self: flex-start; margin-top: 4px; }
+    .badge-complete { color: var(--forest); border-color: rgba(26,58,44,0.35); }
+    .badge-draft { color: var(--gold); border-color: rgba(184,136,42,0.35); }
+    .badge-forthcoming { color: var(--muted-light); border-color: rgba(154,138,106,0.3); }
+
+    /* CONTACT / REQUEST */
+    #request { background: var(--ink); padding: 100px 60px; }
+    .request-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; }
+    .request-title { color: var(--cream); }
+    .request-body { color: rgba(242,237,228,0.7); font-size: 15px; line-height: 1.85; max-width: 480px; margin-top: 20px; }
+    .access-types { display: flex; flex-direction: column; gap: 14px; margin-top: 36px; }
+    .access-type { display: flex; gap: 16px; align-items: flex-start; padding: 18px; border: 1px solid rgba(184,136,42,0.15); }
+    .access-icon { font-size: 18px; flex-shrink: 0; width: 32px; text-align: center; padding-top: 2px; }
+    .access-title { font-size: 13px; font-weight: 600; color: var(--cream); margin-bottom: 3px; }
+    .access-desc { font-size: 12px; line-height: 1.6; color: rgba(242,237,228,0.5); }
+    .req-form { display: flex; flex-direction: column; gap: 14px; }
+    .req-label { font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(184,136,42,0.7); margin-bottom: 6px; display: block; }
+    .req-input, .req-select, .req-textarea { background: rgba(255,255,255,0.05); border: 1px solid rgba(184,136,42,0.2); color: var(--cream); font-family: var(--font-body); font-size: 14px; padding: 12px 16px; outline: none; transition: border-color 0.3s; width: 100%; -webkit-appearance: none; }
+    .req-input:focus, .req-select:focus, .req-textarea:focus { border-color: var(--gold); }
+    .req-input::placeholder, .req-textarea::placeholder { color: rgba(242,237,228,0.3); }
+    .req-textarea { resize: vertical; min-height: 100px; }
+    .req-select option { background: var(--ink-2); }
+    .req-submit { font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--ink); background: var(--gold); border: none; padding: 15px 32px; cursor: pointer; font-weight: 700; transition: all 0.3s; align-self: flex-start; margin-top: 4px; }
+    .req-submit:hover { background: #D4A040; transform: translateY(-2px); }
+
+    /* FOOTER */
+    footer { background: var(--ink-2); border-top: 1px solid rgba(184,136,42,0.15); padding: 56px 60px; display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 60px; }
+    .footer-logo { font-family: var(--font-display); font-size: 22px; font-weight: 600; color: var(--cream); margin-bottom: 12px; }
+    .footer-logo em { font-style: italic; color: var(--gold); }
+    .footer-tagline { font-size: 13px; line-height: 1.75; color: rgba(242,237,228,0.45); max-width: 280px; margin-bottom: 20px; }
+    .footer-legal { font-family: var(--font-mono); font-size: 9px; letter-spacing: 0.08em; color: rgba(184,136,42,0.35); line-height: 1.9; }
+    .footer-col-title { font-family: var(--font-mono); font-size: 9px; letter-spacing: 0.22em; text-transform: uppercase; color: rgba(184,136,42,0.5); margin-bottom: 16px; }
+    .footer-links { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+    .footer-links a { font-size: 13px; color: rgba(242,237,228,0.4); text-decoration: none; transition: color 0.3s; }
+    .footer-links a:hover { color: var(--gold); }
+
+    @keyframes fadeUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
+    .anim { animation: fadeUp 0.8s ease forwards; }
+    .d1 { animation-delay: 0.1s; opacity: 0; } .d2 { animation-delay: 0.25s; opacity: 0; }
+    .d3 { animation-delay: 0.4s; opacity: 0; } .d4 { animation-delay: 0.55s; opacity: 0; }
+
+    @media (max-width: 1024px) {
+      nav { padding: 18px 28px; } .nav-links { display: none; }
+      #hero, #research, #evidence, #thesis, #methodology, #publications, #request { padding: 72px 28px; }
+      footer { padding: 48px 28px; grid-template-columns: 1fr 1fr; }
+      .research-header, .evidence-header, .thesis-layout, .request-layout { grid-template-columns: 1fr; gap: 48px; }
+      .research-grid, .method-grid { grid-template-columns: 1fr; }
+      .evidence-timeline { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+      .pub-item { grid-template-columns: 1fr; gap: 8px; }
+      .thesis-sidebar { position: static; }
+    }
+    @media (max-width: 640px) { footer { grid-template-columns: 1fr; } .hero-actions { flex-direction: column; } }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="#hero" class="nav-logo">Sphinx <em>Analysis</em></a>
+  <ul class="nav-links">
+    <li><a href="#research">Research</a></li>
+    <li><a href="#evidence">Evidence</a></li>
+    <li><a href="#thesis">Thesis</a></li>
+    <li><a href="#publications">Publications</a></li>
+    <li><a href="#request">Access</a></li>
+  </ul>
+  <a href="https://sphinxglobalenterprisescorp.com" class="nav-parent">↑ SPHINX Global</a>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-texture"></div>
+  <div class="hero-glow"></div>
+  <div class="hero-content">
+    <div class="hero-tag anim d1">Forensic Research · Historical Documentation · AI Policy</div>
+    <h1 class="hero-title anim d2">
+      <em>Evidence</em>
+      <strong>is the Argument.</strong>
+    </h1>
+    <p class="hero-tagline anim d3">Forensic documentation of epistemic exclusion across 400+ years of American institutional history — and its continuation into artificial intelligence.</p>
+    <p class="hero-desc anim d4">
+      Sphinx Analysis is the research and forensic documentation arm of SPHINX Global Enterprises Corp.
+      We build peer-review ready evidence chains tracing the structural mechanisms of exclusion —
+      from Papal Bulls to LLM training data — grounded in primary sources, court records,
+      constitutional text, and documented AI governance failures.
+    </p>
+    <div class="hero-actions anim d4">
+      <a href="#thesis" class="btn-gold">Read the Digital Apartheid Thesis</a>
+      <a href="#request" class="btn-outline-light">Request Research Access</a>
+    </div>
+  </div>
+</section>
+
+<!-- RESEARCH AREAS -->
+<section id="research">
+  <div class="research-header">
+    <div>
+      <div class="sec-tag">Research Programs</div>
+      <h2 class="sec-title">Four<br><em>Active</em><br>Investigations</h2>
+    </div>
+    <p class="sec-body">Sphinx Analysis operates four interconnected research programs, each producing documentary evidence in formats accessible to academic journals, legal proceedings, policy institutions, and grant applications. All research is conducted through the SPHINX Method™ multi-LLM orchestration protocol to neutralize single-source bias.</p>
+  </div>
+  <div class="research-grid">
+    <div class="research-card">
+      <span class="research-status status-active">ACTIVE</span>
+      <div class="research-num">PROGRAM — 001</div>
+      <div class="research-title">Digital Apartheid in AI Systems</div>
+      <div class="research-sub">Epistemic Exclusion by Design</div>
+      <div class="research-desc">Forensic documentation of structural exclusion from LLM training, AI governance, and K-12 educational AI deployment. Cross-references Berlin Conference governance architecture with current AI industry practices, researcher demographics, annotation labor conditions, and training data composition.</div>
+    </div>
+    <div class="research-card">
+      <span class="research-status status-active">ACTIVE</span>
+      <div class="research-num">PROGRAM — 002</div>
+      <div class="research-title">The 400-Year Evidence Chain</div>
+      <div class="research-sub">Constitutional, Legal & Demographic Documentation</div>
+      <div class="research-desc">Primary source documentation of institutional harm across four centuries — county ledgers, bastardy exclusion records, guardian bonds, apprentice systems, 13th Amendment exception clause application, and Triangulation of Institutional Silence as a documented mechanism of ongoing coercion.</div>
+    </div>
+    <div class="research-card">
+      <span class="research-status status-wp">WHITEPAPER</span>
+      <div class="research-num">PROGRAM — 003</div>
+      <div class="research-title">PTCS — Clinical & Neuroeducational Framework</div>
+      <div class="research-sub">Post-Colonization Trauma Syndrome</div>
+      <div class="research-desc">Evidence-based framework developing diagnostic criteria for intergenerational trauma from epistemic erasure. Synthesizes neuroeducational research, trauma studies, and historical documentation to position PTCS as a clinically recognized condition requiring institutional acknowledgment and therapeutic response.</div>
+    </div>
+    <div class="research-card">
+      <span class="research-status status-pending">IN DEVELOPMENT</span>
+      <div class="research-num">PROGRAM — 004</div>
+      <div class="research-title">AI Governance Bias Audit</div>
+      <div class="research-sub">Cross-Platform LLM Epistemic Analysis</div>
+      <div class="research-desc">Systematic audit of epistemic bias in deployed LLM systems across ChatGPT, Gemini, Claude, Grok, and DeepSeek — analyzing historical framing, cultural centering, narrative attribution, and whose knowledge systems are treated as default versus marginal across standardized test prompts.</div>
+    </div>
+  </div>
+</section>
+
+<!-- EVIDENCE TIMELINE -->
+<section id="evidence">
+  <div class="evidence-header">
+    <div>
+      <div class="sec-tag" style="color:var(--gold);">The Evidence Chain</div>
+      <h2 class="sec-title">400+ Years.<br><em>Primary Sources.</em><br>One Line.</h2>
+    </div>
+    <p class="sec-body">The continuity thesis is not an argument — it is a documented chain of institutional decisions, each building on the legal and structural architecture of the last. Every node in this chain is traceable to primary source documentation, not secondary analysis.</p>
+  </div>
+  <div class="evidence-timeline">
+    <div class="evidence-node">
+      <div class="ev-year">1452 — 1493</div>
+      <div class="ev-title">Romanus Pontifex & Inter Caetera</div>
+      <div class="ev-desc">Vatican Papal Bulls authorizing perpetual enslavement and division of non-Christian lands. Indigenous and African sovereignty legally nullified before documented first contact.</div>
+      <div class="ev-sources">Vatican Archives · Primary Source</div>
+    </div>
+    <div class="evidence-node">
+      <div class="ev-year">1609 — 1865</div>
+      <div class="ev-title">Slavery 1.0 — 285 Years of Operation</div>
+      <div class="ev-desc">Constitutional architecture, property law codification, bastardy exclusion records, guardian bonds, apprentice systems. 285 years of documented institutional operation.</div>
+      <div class="ev-sources">County Ledgers · Constitutional Text · Census Records</div>
+    </div>
+    <div class="evidence-node">
+      <div class="ev-year">1865 — Present</div>
+      <div class="ev-title">The Reload Mechanism</div>
+      <div class="ev-desc">13th Amendment exception clause. Prison labor system. Triangulation of Institutional Silence. Constitutional authorization of coerced labor continues under criminal punishment language.</div>
+      <div class="ev-sources">Congressional Record · Incarceration Data · Legal Analysis</div>
+    </div>
+    <div class="evidence-node">
+      <div class="ev-year">1884 — 1885</div>
+      <div class="ev-title">Berlin Conference</div>
+      <div class="ev-desc">African continent divided among European powers with zero African participation. The template for governance infrastructure built without consent of those most governed by it.</div>
+      <div class="ev-sources">Conference Proceedings · Diplomatic Records</div>
+    </div>
+    <div class="evidence-node">
+      <div class="ev-year">2017 — Present</div>
+      <div class="ev-title">Digital Apartheid</div>
+      <div class="ev-desc">LLM training data composition, AI researcher demographics, annotation labor conditions, governance board composition, and K-12 educational AI deployment analyzed against Berlin Conference structural template.</div>
+      <div class="ev-sources">AI Model Cards · Industry Reports · Labor Investigations</div>
+    </div>
+  </div>
+</section>
+
+<!-- DIGITAL APARTHEID THESIS -->
+<section id="thesis">
+  <div class="thesis-layout">
+    <div>
+      <div class="sec-tag">Featured Research</div>
+      <h2 class="sec-title"><em>Digital Apartheid:</em><br>Epistemic Exclusion<br>by Design</h2>
+
+      <div class="thesis-body">
+        <p>In 1884, representatives of fourteen European nations convened in Berlin to divide the African continent into spheres of colonial influence. Not a single African representative was present at the table where the map of their world was redrawn. The conference produced a legal and structural architecture for extracting value from African land, labor, and knowledge — while maintaining the fiction that this arrangement served the interests of "civilization."</p>
+
+        <div class="thesis-pull">The Berlin Conference was not merely a historical event. It was a template — a documented blueprint for building governance systems that extract value from a population while systematically excluding that population from the decisions that govern them.</div>
+
+        <p>That template is executing again — in the design, training, and deployment of large language models.</p>
+
+        <p>The training data that forms the cognitive foundation of GPT-4, Gemini, Claude, and their successors is derived primarily from Common Crawl — a corpus that reflects the demographic composition of web content creators: Western, English-language, and educated populations. The communities most affected by AI deployment in education, criminal justice, hiring, and healthcare contributed the least to the epistemic architecture they will be governed by.</p>
+
+        <p>Less than 4% of AI researchers globally are Black. The annotation workforce — the human beings who train AI systems to recognize what is appropriate, harmful, and correct — is composed largely of workers in Kenya, the Philippines, and India earning between $1.32 and $2.00 per hour, according to the TIME investigation of OpenAI's content moderation practices. These workers are the cognitive laborers of the AI economy. They receive no equity stake, no governance voice, and no representation in the systems their labor trains.</p>
+
+        <div class="thesis-pull">The children of communities that were excluded from writing history are now being educated through cognitive infrastructure that excludes their history. The delivery mechanism changed. The epistemic content did not.</div>
+
+        <p>Carter G. Woodson identified this mechanism in 1933 in <em>The Mis-Education of the Negro</em>. He documented how primary and secondary education shaped the self-concept of Black children before critical thinking tools could develop — centering European epistemology while marginalizing African and African American intellectual tradition. The mechanism he described is not corrected in LLMs. It is automated and scaled.</p>
+
+        <p>Digital Apartheid is not a metaphor. It is a structural description of documented conditions: governance without representation, value extraction without equity, epistemic architecture without the participation of those it most governs. The Berlin Conference produced the physical boundaries that divided Africa. LLM training and deployment is producing the epistemic boundaries that will divide the digital world — with the same absence of the people most affected from the table where those boundaries are drawn.</p>
+
+        <p>This research program documents those conditions forensically — through AI model cards, training data composition studies, governance board demographics, annotation labor investigations, and the comparison of LLM outputs against verifiable historical record — and builds the evidentiary foundation for academic, legal, and policy response.</p>
+      </div>
+
+      <a href="#request" class="btn-gold" style="margin-top:36px;">Request Full Research Document</a>
+    </div>
+
+    <div class="thesis-sidebar">
+      <div class="thesis-sidebar-title">Key Data Points</div>
+      <div class="data-points">
+        <div class="data-point">
+          <div class="data-number">&lt;4%</div>
+          <div class="data-label">of AI researchers globally are Black</div>
+          <div class="data-source">AI Now Institute, 2023</div>
+        </div>
+        <div class="data-point">
+          <div class="data-number">$2/hr</div>
+          <div class="data-label">Paid to Kenyan content moderators training OpenAI systems</div>
+          <div class="data-source">TIME Investigation, 2023</div>
+        </div>
+        <div class="data-point">
+          <div class="data-number">92%</div>
+          <div class="data-label">of students now using AI in schoolwork (up from 66% in 2024)</div>
+          <div class="data-source">EDUCAUSE, 2025</div>
+        </div>
+        <div class="data-point">
+          <div class="data-number">86%</div>
+          <div class="data-label">of AI chatbot traffic controlled by ChatGPT + Gemini combined</div>
+          <div class="data-source">Statcounter, 2025</div>
+        </div>
+        <div class="data-point">
+          <div class="data-number">$32B</div>
+          <div class="data-label">Projected AI-in-education market by 2030</div>
+          <div class="data-source">MarketsandMarkets, 2024</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- METHODOLOGY -->
+<section id="methodology">
+  <div class="sec-tag">Research Standards</div>
+  <h2 class="sec-title" style="max-width:600px;">Built for <em>Academic,<br>Legal, and Policy</em> Audiences</h2>
+  <div class="method-grid">
+    <div class="method-card">
+      <div class="method-icon">⚖️</div>
+      <div class="method-title">Primary Source Grounding</div>
+      <div class="method-desc">Every claim in the evidence chain is traceable to primary source documentation — county records, constitutional text, corporate filings, model cards, and peer-reviewed research. No argument rests on secondary analysis alone.</div>
+    </div>
+    <div class="method-card">
+      <div class="method-icon">🔬</div>
+      <div class="method-title">SPHINX Method™ Validation</div>
+      <div class="method-desc">All research analysis is processed through the Council of Five multi-LLM orchestration protocol — routing identical research questions through five independent AI models and analyzing variance to identify and document bias in the analytical tools themselves.</div>
+    </div>
+    <div class="method-card">
+      <div class="method-icon">📋</div>
+      <div class="method-title">HOB Audit Trail</div>
+      <div class="method-desc">Every research session generates a SHA-256 anchored Handoff Oversight Block — an immutable record of the analytical process, model responses, variance scores, and human arbitration decisions. The research methodology is itself auditable.</div>
+    </div>
+    <div class="method-card">
+      <div class="method-icon">🌐</div>
+      <div class="method-title">Cross-Disciplinary Scope</div>
+      <div class="method-desc">Research programs synthesize legal history, neuroeducational science, AI technical documentation, labor economics, political philosophy, and clinical psychology. The argument is strengthened by its refusal to stay within a single discipline's framing.</div>
+    </div>
+    <div class="method-card">
+      <div class="method-icon">📅</div>
+      <div class="method-title">Documented Priority Date</div>
+      <div class="method-desc">All frameworks, thesis statements, and analytical conclusions are documented with timestamped session records across multiple platforms establishing prior art date. The evidentiary record predates any competing publications.</div>
+    </div>
+    <div class="method-card">
+      <div class="method-icon">🔒</div>
+      <div class="method-title">IP Protected Output</div>
+      <div class="method-desc">All research outputs are produced under protected IP frameworks — SPHINX Method™, Digital Apartheid™ analytical framework, PTCS Framework™ — with copyright registration, trademark filings, and provisional patent applications in process.</div>
+    </div>
+  </div>
+</section>
+
+<!-- PUBLICATIONS -->
+<section id="publications">
+  <div class="sec-tag">Research Output</div>
+  <h2 class="sec-title">Publications &<br><em>Documentation</em></h2>
+  <div class="pub-list">
+    <div class="pub-item">
+      <div class="pub-num">DOC-001</div>
+      <div>
+        <div class="pub-title">Digital Apartheid: Epistemic Exclusion by Design in Large Language Models</div>
+        <div class="pub-meta">Thesis · Sphinx Analysis Research Program 001</div>
+        <div class="pub-desc">Core thesis documenting structural parallels between Berlin Conference governance architecture and LLM training, deployment, and educational AI policy. Primary sections: training data composition analysis, researcher demographics, annotation labor conditions, K-12 deployment without consent, and historical continuity framework.</div>
+      </div>
+      <span class="pub-badge badge-draft">DRAFT</span>
+    </div>
+    <div class="pub-item">
+      <div class="pub-num">DOC-002</div>
+      <div>
+        <div class="pub-title">The Reload Mechanism: 13th Amendment Architecture and Institutional Continuity</div>
+        <div class="pub-meta">Legal Analysis · 400-Year Evidence Chain Program</div>
+        <div class="pub-desc">Forensic legal analysis tracing the exception clause of the 13th Amendment as a structural mechanism enabling continuation of coerced labor through the criminal punishment framework. Cross-referenced with county-level documentation, incarceration data, and Constitutional Convention records.</div>
+      </div>
+      <span class="pub-badge badge-draft">DRAFT</span>
+    </div>
+    <div class="pub-item">
+      <div class="pub-num">DOC-003</div>
+      <div>
+        <div class="pub-title">PTCS: A Clinical Framework for Post-Colonization Trauma Syndrome</div>
+        <div class="pub-meta">Clinical Framework · SPHINX Global Enterprises Corp.</div>
+        <div class="pub-desc">Diagnostic criteria development for intergenerational trauma arising from epistemic erasure, forced cultural displacement, and documented denial of institutional recognition. Synthesizes trauma studies, neuroeducational research, and historical documentation toward clinical recognition pathway.</div>
+      </div>
+      <span class="pub-badge badge-draft">IN PREPARATION</span>
+    </div>
+    <div class="pub-item">
+      <div class="pub-num">DOC-004</div>
+      <div>
+        <div class="pub-title">The SPHINX Method™: Multi-LLM Orchestration as Epistemic Governance</div>
+        <div class="pub-meta">Technical Methodology · SPHINX Global Enterprises Corp.</div>
+        <div class="pub-desc">Technical documentation of the Council of Five multi-LLM orchestration architecture — including variance detection methodology, fail-closed governance protocol, KAT scoring implementation, and HOB audit trail generation — as a deployable model for bias-resistant AI governance.</div>
+      </div>
+      <span class="pub-badge badge-forthcoming">FORTHCOMING</span>
+    </div>
+    <div class="pub-item">
+      <div class="pub-num">DOC-005</div>
+      <div>
+        <div class="pub-title">AI in K-12 Education: Market Analysis and Epistemic Risk Assessment</div>
+        <div class="pub-meta">Policy Research · Sphinx Analysis</div>
+        <div class="pub-desc">Analysis of the $5.88B–$32.27B AI education market, dominant LLM deployment patterns, state policy landscape, and epistemic risk to marginalized student populations from unexamined cognitive infrastructure. Includes state contract analysis, CIPA compliance review, and deployment pattern documentation.</div>
+      </div>
+      <span class="pub-badge badge-forthcoming">FORTHCOMING</span>
+    </div>
+  </div>
+</section>
+
+<!-- REQUEST ACCESS -->
+<section id="request">
+  <div class="request-layout">
+    <div>
+      <div class="sec-tag" style="color:var(--gold);">Research Access</div>
+      <h2 class="sec-title request-title">Request<br><em>Access</em></h2>
+      <p class="request-body">Research documents are available to academic institutions, policy organizations, legal practitioners, journalists, and grant program reviewers. All access requests are reviewed and responded to within 5 business days.</p>
+      <div class="access-types">
+        <div class="access-type">
+          <div class="access-icon">🎓</div>
+          <div>
+            <div class="access-title">Academic Review</div>
+            <div class="access-desc">Full document access for peer review, citation, and academic partnership conversations.</div>
+          </div>
+        </div>
+        <div class="access-type">
+          <div class="access-icon">⚖️</div>
+          <div>
+            <div class="access-title">Legal & Policy Review</div>
+            <div class="access-desc">Evidentiary documentation for policy submissions, legal proceedings, or regulatory comment.</div>
+          </div>
+        </div>
+        <div class="access-type">
+          <div class="access-icon">📰</div>
+          <div>
+            <div class="access-title">Media & Press</div>
+            <div class="access-desc">Research briefing and interview access for editorial coverage of AI governance and epistemic justice.</div>
+          </div>
+        </div>
+        <div class="access-type">
+          <div class="access-icon">🤝</div>
+          <div>
+            <div class="access-title">Grant & Funding Programs</div>
+            <div class="access-desc">Full documentation package for NSF, DARPA, and Department of Education grant reviewers.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div>
+      <form class="req-form" onsubmit="handleReqSubmit(event)">
+        <div>
+          <label class="req-label" for="rname">Full Name</label>
+          <input class="req-input" type="text" id="rname" placeholder="Your name" required />
+        </div>
+        <div>
+          <label class="req-label" for="rinst">Institution / Organization</label>
+          <input class="req-input" type="text" id="rinst" placeholder="University, firm, or organization" />
+        </div>
+        <div>
+          <label class="req-label" for="remail">Email Address</label>
+          <input class="req-input" type="email" id="remail" placeholder="institutional preferred" required />
+        </div>
+        <div>
+          <label class="req-label" for="rtype">Access Type</label>
+          <select class="req-select" id="rtype">
+            <option value="">Select access type</option>
+            <option>Academic Review</option>
+            <option>Legal / Policy Review</option>
+            <option>Media / Press</option>
+            <option>Grant / Funding Review</option>
+            <option>Research Partnership</option>
+            <option>Other</option>
+          </select>
+        </div>
+        <div>
+          <label class="req-label" for="rdoc">Document(s) Requested</label>
+          <select class="req-select" id="rdoc">
+            <option value="">Select document</option>
+            <option>DOC-001: Digital Apartheid Thesis</option>
+            <option>DOC-002: The Reload Mechanism</option>
+            <option>DOC-003: PTCS Clinical Framework</option>
+            <option>DOC-004: SPHINX Method Technical Documentation</option>
+            <option>DOC-005: K-12 AI Market Analysis</option>
+            <option>Full Research Package</option>
+          </select>
+        </div>
+        <div>
+          <label class="req-label" for="rpurpose">Purpose / Context</label>
+          <textarea class="req-textarea" id="rpurpose" placeholder="Brief description of how you intend to use the research..." required></textarea>
+        </div>
+        <button type="submit" class="req-submit">Submit Request</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div>
+    <div class="footer-logo">Sphinx <em>Analysis</em></div>
+    <div class="footer-tagline">The forensic research and historical documentation arm of SPHINX Global Enterprises Corp.</div>
+    <div class="footer-legal">
+      © 2025 SPHINX Global Enterprises Corp.<br>
+      Digital Apartheid™ · PTCS Framework™ · SPHINX Method™<br>
+      All research outputs are proprietary IP.<br>
+      sphinxanalysis.com
+    </div>
+  </div>
+  <div>
+    <div class="footer-col-title">Research</div>
+    <ul class="footer-links">
+      <li><a href="#research">Research Programs</a></li>
+      <li><a href="#evidence">Evidence Chain</a></li>
+      <li><a href="#thesis">Digital Apartheid Thesis</a></li>
+      <li><a href="#methodology">Methodology</a></li>
+      <li><a href="#publications">Publications</a></li>
+    </ul>
+  </div>
+  <div>
+    <div class="footer-col-title">Ecosystem</div>
+    <ul class="footer-links">
+      <li><a href="https://sphinxglobalenterprisescorp.com" target="_blank">SPHINX Global Corp.</a></li>
+      <li><a href="https://www.sphinxdigitalmarketingagency.com" target="_blank">Sphinx Digital</a></li>
+      <li><a href="#request">Request Access</a></li>
+    </ul>
+  </div>
+</footer>
+
+<script>
+  function handleReqSubmit(e) {
+    e.preventDefault();
+    const btn = e.target.querySelector('.req-submit');
+    btn.textContent = 'Request Submitted ✓';
+    btn.style.background = '#4CAF50';
+    btn.style.color = '#fff';
+    setTimeout(() => { btn.textContent = 'Submit Request'; btn.style.background = ''; btn.style.color = ''; e.target.reset(); }, 3000);
+  }
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach(el => { if (el.isIntersecting) { el.target.style.animation = 'fadeUp 0.7s ease forwards'; el.target.style.opacity = '1'; } });
+  }, { threshold: 0.07 });
+  document.querySelectorAll('.research-card, .evidence-node, .method-card, .pub-item, .access-type, .data-point').forEach(el => { el.style.opacity = '0'; obs.observe(el); });
+</script>
+</body>
+</html>
