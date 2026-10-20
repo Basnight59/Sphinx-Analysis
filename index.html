@@ -160,6 +160,8 @@
     .data-number { font-family: var(--font-display); font-size: 40px; font-weight: 700; color: var(--gold); line-height: 1; margin-bottom: 6px; }
     .data-label { font-size: 12px; line-height: 1.5; color: var(--muted); }
     .data-source { font-family: var(--font-mono); font-size: 9px; letter-spacing: 0.1em; color: var(--muted-light); margin-top: 4px; }
+    .data-source a { color: inherit; text-decoration: underline; text-decoration-color: rgba(184,136,42,0.5); text-underline-offset: 2px; }
+    .data-source a:hover { color: var(--gold); }
 
     /* METHODOLOGY */
     #methodology { background: var(--parchment); padding: 100px 60px; }
@@ -419,7 +421,7 @@
 
         <p>The training data that forms the cognitive foundation of GPT-4, Gemini, Claude, and their successors is derived primarily from Common Crawl — a corpus that reflects the demographic composition of web content creators: Western, English-language, and educated populations. The communities most affected by AI deployment in education, criminal justice, hiring, and healthcare contributed the least to the epistemic architecture they will be governed by.</p>
 
-        <p>Less than 4% of AI researchers globally are Black. The annotation workforce — the human beings who train AI systems to recognize what is appropriate, harmful, and correct — is composed largely of workers in Kenya, the Philippines, and India earning between $1.32 and $2.00 per hour, according to the TIME investigation of OpenAI's content moderation practices. These workers are the cognitive laborers of the AI economy. They receive no equity stake, no governance voice, and no representation in the systems their labor trains.</p>
+        <p>At Google, Facebook, and Microsoft, Black workers made up just 2.5% to 4% of the workforce, according to the AI Now Institute's 2019 report <em>Discriminating Systems</em>. The annotation workforce — the human beings who train AI systems to recognize what is appropriate, harmful, and correct — is composed largely of workers in Kenya, the Philippines, and India earning between $1.32 and $2.00 per hour, according to the TIME investigation of OpenAI's content moderation practices. These workers are the cognitive laborers of the AI economy. They receive no equity stake, no governance voice, and no representation in the systems their labor trains.</p>
 
         <div class="thesis-pull">The children of communities that were excluded from writing history are now being educated through cognitive infrastructure that excludes their history. The delivery mechanism changed. The epistemic content did not.</div>
 
@@ -437,9 +439,9 @@
       <div class="thesis-sidebar-title">Key Data Points</div>
       <div class="data-points">
         <div class="data-point">
-          <div class="data-number">&lt;4%</div>
-          <div class="data-label">of AI researchers globally are Black</div>
-          <div class="data-source">AI Now Institute, 2023</div>
+          <div class="data-number">2.5–4%</div>
+          <div class="data-label">of the workforce at Google, Facebook and Microsoft is Black</div>
+          <div class="data-source"><a href="https://ainowinstitute.org/wp-content/uploads/2023/04/discriminatingsystems.pdf" target="_blank" rel="noopener">AI Now Institute, <em>Discriminating Systems</em>, 2019</a></div>
         </div>
         <div class="data-point">
           <div class="data-number">$2/hr</div>
@@ -621,9 +623,10 @@
       <div class="req-status" id="req-status" role="status">
         Thank you — your request has been received. We respond to all requests within 5 business days.
       </div>
-      <!-- Requests are emailed via FormSubmit (formsubmit.co) to the address in the action URL.
-           Once activated, it can be swapped for FormSubmit's private alias to hide the address. -->
-      <form class="req-form" action="https://formsubmit.co/kennethbasnight@sphinxdigitalmarketingagencyllc.com" method="POST">
+      <!-- Requests are emailed via FormSubmit (formsubmit.co). The code in the action URL
+           is FormSubmit's private alias for the owner's inbox, so the address stays hidden.
+           To change the destination, use a new email address (or its alias) and re-activate. -->
+      <form class="req-form" action="https://formsubmit.co/df5c8686bf0e3e3cfd14067afb468311" method="POST">
         <input type="hidden" name="_subject" value="New research access request — sphinxanalysis.com" />
         <input type="hidden" name="_template" value="table" />
         <input type="hidden" name="_next" value="https://www.sphinxanalysis.com/?sent=1#request" />
