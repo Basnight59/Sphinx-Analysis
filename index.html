@@ -5,7 +5,38 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Sphinx Analysis | Forensic Research & Historical Documentation</title>
   <meta name="description" content="Sphinx Analysis is the research arm of SPHINX Global — housing the Digital Apartheid thesis, 400-year evidence chain, and forensic documentation on epistemic exclusion in AI systems." />
+  <link rel="canonical" href="https://www.sphinxanalysis.com/" />
+  <meta name="robots" content="index, follow" />
+  <meta name="theme-color" content="#1A1208" />
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+
+  <!-- Social sharing previews -->
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Sphinx Analysis" />
+  <meta property="og:title" content="Sphinx Analysis | Forensic Research & Historical Documentation" />
+  <meta property="og:description" content="The research arm of SPHINX Global: the Digital Apartheid thesis, a 400-year evidence chain, and forensic documentation of epistemic exclusion in AI systems." />
+  <meta property="og:url" content="https://www.sphinxanalysis.com/" />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Sphinx Analysis | Forensic Research & Historical Documentation" />
+  <meta name="twitter:description" content="The research arm of SPHINX Global: the Digital Apartheid thesis, a 400-year evidence chain, and forensic documentation of epistemic exclusion in AI systems." />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ResearchOrganization",
+    "name": "Sphinx Analysis",
+    "url": "https://www.sphinxanalysis.com/",
+    "description": "Forensic research and historical documentation arm of SPHINX Global Enterprises Corp., focused on epistemic exclusion in institutional history and AI systems.",
+    "parentOrganization": {
+      "@type": "Organization",
+      "name": "SPHINX Global Enterprises Corp.",
+      "url": "https://sphinxglobalenterprisescorp.com/"
+    }
+  }
+  </script>
+
   <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=IBM+Plex+Mono:wght@300;400;500;700&family=IBM+Plex+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
   <style>
     :root {
@@ -26,6 +57,7 @@
     }
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; }
+    section[id] { scroll-margin-top: 72px; }
     body { background: var(--white); color: var(--ink); font-family: var(--font-body); overflow-x: hidden; line-height: 1.6; }
 
     /* NAV */
@@ -37,6 +69,16 @@
     .nav-links a:hover { color: var(--gold); }
     .nav-parent { font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted-light); border: 1px solid rgba(184,136,42,0.3); padding: 8px 16px; text-decoration: none; transition: all 0.2s; }
     .nav-parent:hover { border-color: var(--gold); color: var(--gold); }
+    .nav-links { order: 2; }
+    .nav-right { display: flex; align-items: center; gap: 14px; order: 3; }
+    .nav-toggle { display: none; background: none; border: 1px solid rgba(184,136,42,0.4); width: 44px; height: 44px; cursor: pointer; position: relative; }
+    .nav-toggle span, .nav-toggle span::before, .nav-toggle span::after { position: absolute; left: 12px; width: 18px; height: 1.5px; background: var(--ink); content: ''; transition: transform 0.25s; }
+    .nav-toggle span { top: 21px; }
+    .nav-toggle span::before { left: 0; top: -6px; }
+    .nav-toggle span::after { left: 0; top: 6px; }
+    nav.open .nav-toggle span { background: transparent; }
+    nav.open .nav-toggle span::before { transform: translateY(6px) rotate(45deg); }
+    nav.open .nav-toggle span::after { transform: translateY(-6px) rotate(-45deg); }
 
     /* HERO */
     #hero { min-height: 100vh; display: flex; flex-direction: column; justify-content: center; position: relative; padding: 130px 60px 80px; background: var(--ink); overflow: hidden; }
@@ -148,16 +190,20 @@
     .req-select option { background: var(--ink-2); }
     .req-submit { font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--ink); background: var(--gold); border: none; padding: 15px 32px; cursor: pointer; font-weight: 700; transition: all 0.3s; align-self: flex-start; margin-top: 4px; }
     .req-submit:hover { background: #D4A040; transform: translateY(-2px); }
+    .req-honey { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+    .req-hint { font-size: 12px; line-height: 1.6; color: rgba(242,237,228,0.6); }
+    .req-status { display: none; padding: 16px 18px; border: 1px solid rgba(76,175,80,0.45); background: rgba(76,175,80,0.1); color: var(--cream); font-size: 14px; margin-bottom: 18px; }
+    .req-status.show { display: block; }
 
     /* FOOTER */
     footer { background: var(--ink-2); border-top: 1px solid rgba(184,136,42,0.15); padding: 56px 60px; display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 60px; }
     .footer-logo { font-family: var(--font-display); font-size: 22px; font-weight: 600; color: var(--cream); margin-bottom: 12px; }
     .footer-logo em { font-style: italic; color: var(--gold); }
-    .footer-tagline { font-size: 13px; line-height: 1.75; color: rgba(242,237,228,0.45); max-width: 280px; margin-bottom: 20px; }
-    .footer-legal { font-family: var(--font-mono); font-size: 9px; letter-spacing: 0.08em; color: rgba(184,136,42,0.35); line-height: 1.9; }
+    .footer-tagline { font-size: 13px; line-height: 1.75; color: rgba(242,237,228,0.65); max-width: 280px; margin-bottom: 20px; }
+    .footer-legal { font-family: var(--font-mono); font-size: 9px; letter-spacing: 0.08em; color: rgba(184,136,42,0.7); line-height: 1.9; }
     .footer-col-title { font-family: var(--font-mono); font-size: 9px; letter-spacing: 0.22em; text-transform: uppercase; color: rgba(184,136,42,0.5); margin-bottom: 16px; }
     .footer-links { list-style: none; display: flex; flex-direction: column; gap: 10px; }
-    .footer-links a { font-size: 13px; color: rgba(242,237,228,0.4); text-decoration: none; transition: color 0.3s; }
+    .footer-links a { font-size: 13px; color: rgba(242,237,228,0.65); text-decoration: none; transition: color 0.3s; }
     .footer-links a:hover { color: var(--gold); }
 
     @keyframes fadeUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
@@ -166,8 +212,15 @@
     .d3 { animation-delay: 0.4s; opacity: 0; } .d4 { animation-delay: 0.55s; opacity: 0; }
 
     @media (max-width: 1024px) {
-      nav { padding: 18px 28px; } .nav-links { display: none; }
+      nav { padding: 14px 28px; flex-wrap: wrap; }
+      .nav-toggle { display: block; }
+      .nav-right { order: 2; }
+      .nav-links { display: none; order: 3; width: 100%; flex-direction: column; gap: 0; margin-top: 12px; border-top: 1px solid rgba(184,136,42,0.2); }
+      nav.open { background: var(--white); box-shadow: 0 12px 30px rgba(26,18,8,0.25); }
+      nav.open .nav-links { display: flex; }
+      .nav-links a { display: block; padding: 15px 0; font-size: 12px; border-bottom: 1px solid rgba(184,136,42,0.1); }
       #hero, #research, #evidence, #thesis, #methodology, #publications, #request { padding: 72px 28px; }
+      #hero { padding-top: 124px; }
       footer { padding: 48px 28px; grid-template-columns: 1fr 1fr; }
       .research-header, .evidence-header, .thesis-layout, .request-layout { grid-template-columns: 1fr; gap: 48px; }
       .research-grid, .method-grid { grid-template-columns: 1fr; }
@@ -175,21 +228,43 @@
       .pub-item { grid-template-columns: 1fr; gap: 8px; }
       .thesis-sidebar { position: static; }
     }
-    @media (max-width: 640px) { footer { grid-template-columns: 1fr; } .hero-actions { flex-direction: column; } }
+    @media (max-width: 640px) {
+      footer { grid-template-columns: 1fr; padding: 40px 20px; }
+      .hero-actions { flex-direction: column; }
+      #research, #evidence, #thesis, #methodology, #publications, #request { padding: 64px 20px; }
+      #hero { padding: 120px 20px 64px; }
+      nav { padding: 12px 20px; }
+      .nav-parent { padding: 8px 10px; font-size: 9px; }
+      .evidence-timeline { grid-template-columns: 1fr; }
+      .research-card { padding: 52px 24px 32px; }
+    }
+    @media (max-width: 380px) {
+      .nav-logo { font-size: 19px; }
+      .np-full { display: none; }
+      .nav-right { gap: 8px; }
+      .nav-parent { padding: 7px 8px; letter-spacing: 0.06em; }
+      .nav-toggle { width: 40px; height: 40px; }
+      .nav-toggle span, .nav-toggle span::before, .nav-toggle span::after { left: 10px; }
+      .nav-toggle span { top: 19px; }
+      .nav-toggle span::before { left: 0; } .nav-toggle span::after { left: 0; }
+    }
   </style>
 </head>
 <body>
 
-<nav>
+<nav id="site-nav">
   <a href="#hero" class="nav-logo">Sphinx <em>Analysis</em></a>
-  <ul class="nav-links">
+  <ul class="nav-links" id="nav-links">
     <li><a href="#research">Research</a></li>
     <li><a href="#evidence">Evidence</a></li>
     <li><a href="#thesis">Thesis</a></li>
     <li><a href="#publications">Publications</a></li>
     <li><a href="#request">Access</a></li>
   </ul>
-  <a href="https://sphinxglobalenterprisescorp.com" class="nav-parent">↑ SPHINX Global</a>
+  <div class="nav-right">
+    <a href="https://sphinxglobalenterprisescorp.com" class="nav-parent">↑ <span class="np-full">SPHINX </span>Global</a>
+    <button class="nav-toggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="nav-links"><span></span></button>
+  </div>
 </nav>
 
 <!-- HERO -->
@@ -229,28 +304,28 @@
     <div class="research-card">
       <span class="research-status status-active">ACTIVE</span>
       <div class="research-num">PROGRAM — 001</div>
-      <div class="research-title">Digital Apartheid in AI Systems</div>
+      <h3 class="research-title">Digital Apartheid in AI Systems</h3>
       <div class="research-sub">Epistemic Exclusion by Design</div>
       <div class="research-desc">Forensic documentation of structural exclusion from LLM training, AI governance, and K-12 educational AI deployment. Cross-references Berlin Conference governance architecture with current AI industry practices, researcher demographics, annotation labor conditions, and training data composition.</div>
     </div>
     <div class="research-card">
       <span class="research-status status-active">ACTIVE</span>
       <div class="research-num">PROGRAM — 002</div>
-      <div class="research-title">The 400-Year Evidence Chain</div>
+      <h3 class="research-title">The 400-Year Evidence Chain</h3>
       <div class="research-sub">Constitutional, Legal & Demographic Documentation</div>
       <div class="research-desc">Primary source documentation of institutional harm across four centuries — county ledgers, bastardy exclusion records, guardian bonds, apprentice systems, 13th Amendment exception clause application, and Triangulation of Institutional Silence as a documented mechanism of ongoing coercion.</div>
     </div>
     <div class="research-card">
       <span class="research-status status-wp">WHITEPAPER</span>
       <div class="research-num">PROGRAM — 003</div>
-      <div class="research-title">PTCS — Clinical & Neuroeducational Framework</div>
+      <h3 class="research-title">PTCS — Clinical & Neuroeducational Framework</h3>
       <div class="research-sub">Post-Colonization Trauma Syndrome</div>
       <div class="research-desc">A proposed diagnostic framework for intergenerational trauma arising from epistemic erasure, synthesizing neuroeducational research, trauma studies, and historical documentation. PTCS is not a diagnosis currently recognized by the DSM; this program develops the evidentiary and clinical case for institutional acknowledgment and future recognition.</div>
     </div>
     <div class="research-card">
       <span class="research-status status-pending">IN DEVELOPMENT</span>
       <div class="research-num">PROGRAM — 004</div>
-      <div class="research-title">AI Governance Bias Audit</div>
+      <h3 class="research-title">AI Governance Bias Audit</h3>
       <div class="research-sub">Cross-Platform LLM Epistemic Analysis</div>
       <div class="research-desc">Systematic audit of epistemic bias in deployed LLM systems across ChatGPT, Gemini, Claude, Grok, and DeepSeek — analyzing historical framing, cultural centering, narrative attribution, and whose knowledge systems are treated as default versus marginal across standardized test prompts.</div>
     </div>
@@ -269,31 +344,31 @@
   <div class="evidence-timeline">
     <div class="evidence-node">
       <div class="ev-year">1452 — 1493</div>
-      <div class="ev-title">Romanus Pontifex & Inter Caetera</div>
+      <h3 class="ev-title">Romanus Pontifex & Inter Caetera</h3>
       <div class="ev-desc">Vatican Papal Bulls authorizing perpetual enslavement and division of non-Christian lands. Indigenous and African sovereignty legally nullified before documented first contact.</div>
       <div class="ev-sources">Vatican Archives · Primary Source</div>
     </div>
     <div class="evidence-node">
       <div class="ev-year">1609 — 1865</div>
-      <div class="ev-title">Slavery 1.0 — 285 Years of Operation</div>
+      <h3 class="ev-title">Slavery 1.0 — 285 Years of Operation</h3>
       <div class="ev-desc">Constitutional architecture, property law codification, bastardy exclusion records, guardian bonds, apprentice systems. 285 years of documented institutional operation.</div>
       <div class="ev-sources">County Ledgers · Constitutional Text · Census Records</div>
     </div>
     <div class="evidence-node">
       <div class="ev-year">1865 — Present</div>
-      <div class="ev-title">The Reload Mechanism</div>
+      <h3 class="ev-title">The Reload Mechanism</h3>
       <div class="ev-desc">13th Amendment exception clause. Prison labor system. Triangulation of Institutional Silence. Constitutional authorization of coerced labor continues under criminal punishment language.</div>
       <div class="ev-sources">Congressional Record · Incarceration Data · Legal Analysis</div>
     </div>
     <div class="evidence-node">
       <div class="ev-year">1884 — 1885</div>
-      <div class="ev-title">Berlin Conference</div>
+      <h3 class="ev-title">Berlin Conference</h3>
       <div class="ev-desc">African continent divided among European powers with zero African participation. The template for governance infrastructure built without consent of those most governed by it.</div>
       <div class="ev-sources">Conference Proceedings · Diplomatic Records</div>
     </div>
     <div class="evidence-node">
       <div class="ev-year">2017 — Present</div>
-      <div class="ev-title">Digital Apartheid</div>
+      <h3 class="ev-title">Digital Apartheid</h3>
       <div class="ev-desc">LLM training data composition, AI researcher demographics, annotation labor conditions, governance board composition, and K-12 educational AI deployment analyzed against Berlin Conference structural template.</div>
       <div class="ev-sources">AI Model Cards · Industry Reports · Labor Investigations</div>
     </div>
@@ -370,32 +445,32 @@
   <div class="method-grid">
     <div class="method-card">
       <div class="method-icon">⚖️</div>
-      <div class="method-title">Primary Source Grounding</div>
+      <h3 class="method-title">Primary Source Grounding</h3>
       <div class="method-desc">Every claim in the evidence chain is traceable to primary source documentation — county records, constitutional text, corporate filings, model cards, and peer-reviewed research. No argument rests on secondary analysis alone.</div>
     </div>
     <div class="method-card">
       <div class="method-icon">🔬</div>
-      <div class="method-title">SPHINX Method™ Validation</div>
+      <h3 class="method-title">SPHINX Method™ Validation</h3>
       <div class="method-desc">All research analysis is processed through the Council of Five multi-LLM orchestration protocol — routing identical research questions through five independent AI models and analyzing variance to identify and document bias in the analytical tools themselves.</div>
     </div>
     <div class="method-card">
       <div class="method-icon">📋</div>
-      <div class="method-title">HOB Audit Trail</div>
+      <h3 class="method-title">HOB Audit Trail</h3>
       <div class="method-desc">Every research session generates a SHA-256 anchored Handoff Oversight Block — an immutable record of the analytical process, model responses, variance scores, and human arbitration decisions. The research methodology is itself auditable.</div>
     </div>
     <div class="method-card">
       <div class="method-icon">🌐</div>
-      <div class="method-title">Cross-Disciplinary Scope</div>
+      <h3 class="method-title">Cross-Disciplinary Scope</h3>
       <div class="method-desc">Research programs synthesize legal history, neuroeducational science, AI technical documentation, labor economics, political philosophy, and clinical psychology. The argument is strengthened by its refusal to stay within a single discipline's framing.</div>
     </div>
     <div class="method-card">
       <div class="method-icon">📅</div>
-      <div class="method-title">Documented Priority Date</div>
+      <h3 class="method-title">Documented Priority Date</h3>
       <div class="method-desc">All frameworks, thesis statements, and analytical conclusions are documented with timestamped session records across multiple platforms establishing prior art date. The evidentiary record predates any competing publications.</div>
     </div>
     <div class="method-card">
       <div class="method-icon">🔒</div>
-      <div class="method-title">IP Protected Output</div>
+      <h3 class="method-title">IP Protected Output</h3>
       <div class="method-desc">All research outputs are produced under protected IP frameworks — SPHINX Method™, Digital Apartheid™ analytical framework, PTCS Framework™ — with copyright registration, trademark filings, and provisional patent applications in process.</div>
     </div>
   </div>
@@ -409,7 +484,7 @@
     <div class="pub-item">
       <div class="pub-num">DOC-001</div>
       <div>
-        <div class="pub-title">Digital Apartheid: Epistemic Exclusion by Design in Large Language Models</div>
+        <h3 class="pub-title">Digital Apartheid: Epistemic Exclusion by Design in Large Language Models</h3>
         <div class="pub-meta">Thesis · Sphinx Analysis Research Program 001</div>
         <div class="pub-desc">Core thesis documenting structural parallels between Berlin Conference governance architecture and LLM training, deployment, and educational AI policy. Primary sections: training data composition analysis, researcher demographics, annotation labor conditions, K-12 deployment without consent, and historical continuity framework.</div>
       </div>
@@ -418,7 +493,7 @@
     <div class="pub-item">
       <div class="pub-num">DOC-002</div>
       <div>
-        <div class="pub-title">The Reload Mechanism: 13th Amendment Architecture and Institutional Continuity</div>
+        <h3 class="pub-title">The Reload Mechanism: 13th Amendment Architecture and Institutional Continuity</h3>
         <div class="pub-meta">Legal Analysis · 400-Year Evidence Chain Program</div>
         <div class="pub-desc">Forensic legal analysis tracing the exception clause of the 13th Amendment as a structural mechanism enabling continuation of coerced labor through the criminal punishment framework. Cross-referenced with county-level documentation, incarceration data, and Constitutional Convention records.</div>
       </div>
@@ -427,7 +502,7 @@
     <div class="pub-item">
       <div class="pub-num">DOC-003</div>
       <div>
-        <div class="pub-title">PTCS: A Clinical Framework for Post-Colonization Trauma Syndrome</div>
+        <h3 class="pub-title">PTCS: A Clinical Framework for Post-Colonization Trauma Syndrome</h3>
         <div class="pub-meta">Clinical Framework · SPHINX Global Enterprises Corp.</div>
         <div class="pub-desc">Proposed diagnostic criteria for intergenerational trauma arising from epistemic erasure, forced cultural displacement, and documented denial of institutional recognition. Synthesizes trauma studies, neuroeducational research, and historical documentation. Not a diagnosis currently recognized by the DSM — this document builds the evidentiary basis toward a future clinical recognition pathway.</div>
       </div>
@@ -436,7 +511,7 @@
     <div class="pub-item">
       <div class="pub-num">DOC-004</div>
       <div>
-        <div class="pub-title">The SPHINX Method™: Multi-LLM Orchestration as Epistemic Governance</div>
+        <h3 class="pub-title">The SPHINX Method™: Multi-LLM Orchestration as Epistemic Governance</h3>
         <div class="pub-meta">Technical Methodology · SPHINX Global Enterprises Corp.</div>
         <div class="pub-desc">Technical documentation of the Council of Five multi-LLM orchestration architecture — including variance detection methodology, fail-closed governance protocol, KAT scoring implementation, and HOB audit trail generation — as a deployable model for bias-resistant AI governance.</div>
       </div>
@@ -445,7 +520,7 @@
     <div class="pub-item">
       <div class="pub-num">DOC-005</div>
       <div>
-        <div class="pub-title">AI in K-12 Education: Market Analysis and Epistemic Risk Assessment</div>
+        <h3 class="pub-title">AI in K-12 Education: Market Analysis and Epistemic Risk Assessment</h3>
         <div class="pub-meta">Policy Research · Sphinx Analysis</div>
         <div class="pub-desc">Analysis of the $5.88B–$32.27B AI education market, dominant LLM deployment patterns, state policy landscape, and epistemic risk to marginalized student populations from unexamined cognitive infrastructure. Includes state contract analysis, CIPA compliance review, and deployment pattern documentation.</div>
       </div>
@@ -493,22 +568,34 @@
       </div>
     </div>
     <div>
-      <form class="req-form" onsubmit="handleReqSubmit(event)">
+      <div class="req-status" id="req-status" role="status">
+        Thank you — your request has been received. We respond to all requests within 5 business days.
+      </div>
+      <!-- Requests are emailed via FormSubmit (formsubmit.co) to the address in the action URL.
+           Once activated, it can be swapped for FormSubmit's private alias to hide the address. -->
+      <form class="req-form" action="https://formsubmit.co/kennethbasnight@sphinxdigitalmarketingagencyllc.com" method="POST">
+        <input type="hidden" name="_subject" value="New research access request — sphinxanalysis.com" />
+        <input type="hidden" name="_template" value="table" />
+        <input type="hidden" name="_next" value="https://www.sphinxanalysis.com/?sent=1#request" />
+        <div class="req-honey" aria-hidden="true">
+          <label for="_honey">Leave this empty</label>
+          <input type="text" name="_honey" id="_honey" tabindex="-1" autocomplete="off" />
+        </div>
         <div>
           <label class="req-label" for="rname">Full Name</label>
-          <input class="req-input" type="text" id="rname" placeholder="Your name" required />
+          <input class="req-input" type="text" id="rname" name="name" autocomplete="name" placeholder="Your name" required />
         </div>
         <div>
           <label class="req-label" for="rinst">Institution / Organization</label>
-          <input class="req-input" type="text" id="rinst" placeholder="University, firm, or organization" />
+          <input class="req-input" type="text" id="rinst" name="institution" autocomplete="organization" placeholder="University, firm, or organization" />
         </div>
         <div>
           <label class="req-label" for="remail">Email Address</label>
-          <input class="req-input" type="email" id="remail" placeholder="institutional preferred" required />
+          <input class="req-input" type="email" id="remail" name="email" autocomplete="email" placeholder="institutional preferred" required />
         </div>
         <div>
           <label class="req-label" for="rtype">Access Type</label>
-          <select class="req-select" id="rtype">
+          <select class="req-select" id="rtype" name="access_type">
             <option value="">Select access type</option>
             <option>Academic Review</option>
             <option>Legal / Policy Review</option>
@@ -520,7 +607,7 @@
         </div>
         <div>
           <label class="req-label" for="rdoc">Document(s) Requested</label>
-          <select class="req-select" id="rdoc">
+          <select class="req-select" id="rdoc" name="documents_requested">
             <option value="">Select document</option>
             <option>DOC-001: Digital Apartheid Thesis</option>
             <option>DOC-002: The Reload Mechanism</option>
@@ -532,9 +619,10 @@
         </div>
         <div>
           <label class="req-label" for="rpurpose">Purpose / Context</label>
-          <textarea class="req-textarea" id="rpurpose" placeholder="Brief description of how you intend to use the research..." required></textarea>
+          <textarea class="req-textarea" id="rpurpose" name="purpose" placeholder="Brief description of how you intend to use the research..." required></textarea>
         </div>
         <button type="submit" class="req-submit">Submit Request</button>
+        <p class="req-hint">After you click Submit, a quick "I'm not a robot" check will appear. Please complete it so your request reaches us.</p>
       </form>
     </div>
   </div>
@@ -546,7 +634,7 @@
     <div class="footer-logo">Sphinx <em>Analysis</em></div>
     <div class="footer-tagline">The forensic research and historical documentation arm of SPHINX Global Enterprises Corp.</div>
     <div class="footer-legal">
-      © 2025 SPHINX Global Enterprises Corp.<br>
+      © 2025–2026 SPHINX Global Enterprises Corp.<br>
       Digital Apartheid™ · PTCS Framework™ · SPHINX Method™<br>
       All research outputs are proprietary IP.<br>
       sphinxanalysis.com
@@ -565,22 +653,34 @@
   <div>
     <div class="footer-col-title">Ecosystem</div>
     <ul class="footer-links">
-      <li><a href="https://sphinxglobalenterprisescorp.com" target="_blank">SPHINX Global Corp.</a></li>
-      <li><a href="https://www.sphinxdigitalmarketingagency.com" target="_blank">Sphinx Digital</a></li>
+      <li><a href="https://sphinxglobalenterprisescorp.com" target="_blank" rel="noopener">SPHINX Global Corp.</a></li>
+      <li><a href="https://www.sphinxdigitalmarketingagency.com" target="_blank" rel="noopener">Sphinx Digital</a></li>
       <li><a href="#request">Request Access</a></li>
     </ul>
   </div>
 </footer>
 
 <script>
-  function handleReqSubmit(e) {
-    e.preventDefault();
-    const btn = e.target.querySelector('.req-submit');
-    btn.textContent = 'Request Submitted ✓';
-    btn.style.background = '#4CAF50';
-    btn.style.color = '#fff';
-    setTimeout(() => { btn.textContent = 'Submit Request'; btn.style.background = ''; btn.style.color = ''; e.target.reset(); }, 3000);
+  // Show confirmation after FormSubmit redirects back with ?sent=1
+  if (new URLSearchParams(location.search).get('sent') === '1') {
+    document.getElementById('req-status').classList.add('show');
+    history.replaceState(null, '', location.pathname + '#request');
   }
+  document.querySelector('.req-form').addEventListener('submit', function () {
+    const btn = this.querySelector('.req-submit');
+    btn.textContent = 'Sending…'; btn.disabled = true;
+  });
+
+  // Mobile menu
+  const nav = document.getElementById('site-nav');
+  const toggle = nav.querySelector('.nav-toggle');
+  const setMenu = open => {
+    nav.classList.toggle('open', open);
+    toggle.setAttribute('aria-expanded', open);
+    toggle.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+  };
+  toggle.addEventListener('click', () => setMenu(!nav.classList.contains('open')));
+  nav.querySelectorAll('.nav-links a').forEach(a => a.addEventListener('click', () => setMenu(false)));
   const obs = new IntersectionObserver((entries) => {
     entries.forEach(el => { if (el.isIntersecting) { el.target.style.animation = 'fadeUp 0.7s ease forwards'; el.target.style.opacity = '1'; } });
   }, { threshold: 0.07 });
