@@ -8,7 +8,8 @@
   <link rel="canonical" href="https://www.sphinxanalysis.com/" />
   <meta name="robots" content="index, follow" />
   <meta name="theme-color" content="#1A1208" />
-  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+  <link rel="icon" href="/assets/favicon-32.png" type="image/png" sizes="32x32" />
+  <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png" />
 
   <!-- Social sharing previews -->
   <meta property="og:type" content="website" />
@@ -16,7 +17,12 @@
   <meta property="og:title" content="Sphinx Analysis | Forensic Research & Historical Documentation" />
   <meta property="og:description" content="The research arm of SPHINX Global: the Digital Apartheid thesis, a 400-year evidence chain, and forensic documentation of epistemic exclusion in AI systems." />
   <meta property="og:url" content="https://www.sphinxanalysis.com/" />
-  <meta name="twitter:card" content="summary" />
+  <meta property="og:image" content="https://www.sphinxanalysis.com/assets/og-image.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Sphinx Analysis logo" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:image" content="https://www.sphinxanalysis.com/assets/og-image.jpg" />
   <meta name="twitter:title" content="Sphinx Analysis | Forensic Research & Historical Documentation" />
   <meta name="twitter:description" content="The research arm of SPHINX Global: the Digital Apartheid thesis, a 400-year evidence chain, and forensic documentation of epistemic exclusion in AI systems." />
 
@@ -26,6 +32,8 @@
     "@type": "ResearchOrganization",
     "name": "Sphinx Analysis",
     "url": "https://www.sphinxanalysis.com/",
+    "logo": "https://www.sphinxanalysis.com/assets/logo-800.jpg",
+    "image": "https://www.sphinxanalysis.com/assets/og-image.jpg",
     "description": "Forensic research and historical documentation arm of SPHINX Global Enterprises Corp., focused on epistemic exclusion in institutional history and AI systems.",
     "parentOrganization": {
       "@type": "Organization",
@@ -96,7 +104,21 @@
     #hero { min-height: 100vh; display: flex; flex-direction: column; justify-content: center; position: relative; padding: 130px 60px 80px; background: var(--ink); overflow: hidden; }
     .hero-texture { position: absolute; inset: 0; background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23B8882A' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E"); }
     .hero-glow { position: absolute; width: 600px; height: 600px; background: radial-gradient(circle, rgba(184,136,42,0.08) 0%, transparent 70%); top: 50%; right: 10%; transform: translateY(-50%); }
+    .hero-main { position: relative; display: grid; grid-template-columns: minmax(0, 1fr) clamp(340px, 30vw, 500px); gap: 56px; align-items: center; }
     .hero-content { position: relative; z-index: 1; max-width: 800px; }
+    /* lighten: the logo's near-black background drops out, leaving only the gold and red artwork */
+    .hero-logo { margin: 0; mix-blend-mode: lighten; }
+    .hero-logo img {
+      display: block; width: 100%; height: auto;
+      -webkit-mask-image: linear-gradient(to right, transparent 0, #000 7%, #000 93%, transparent 100%), linear-gradient(to bottom, transparent 0, #000 6%, #000 90%, transparent 100%);
+      -webkit-mask-composite: source-in;
+      mask-image: linear-gradient(to right, transparent 0, #000 7%, #000 93%, transparent 100%), linear-gradient(to bottom, transparent 0, #000 6%, #000 90%, transparent 100%);
+      mask-composite: intersect;
+    }
+    @media (max-width: 1100px) {
+      .hero-main { grid-template-columns: 1fr; gap: 8px; }
+      .hero-logo { order: -1; width: min(340px, 78vw); justify-self: center; }
+    }
     .hero-tag { font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.28em; text-transform: uppercase; color: var(--gold); margin-bottom: 32px; display: flex; align-items: center; gap: 16px; }
     .hero-tag::before { content: ''; width: 36px; height: 1px; background: var(--gold); opacity: 0.5; }
     .hero-title { font-family: var(--font-display); font-size: clamp(46px, 6.5vw, 88px); font-weight: 300; color: var(--cream); line-height: 1.0; margin-bottom: 16px; }
@@ -300,6 +322,7 @@
 <section id="hero">
   <div class="hero-texture"></div>
   <div class="hero-glow"></div>
+  <div class="hero-main">
   <div class="hero-content">
     <div class="hero-tag anim d1">Forensic Research · Historical Documentation · AI Policy</div>
     <h1 class="hero-title anim d2">
@@ -317,6 +340,14 @@
       <a href="#thesis" class="btn-gold">Read the Digital Apartheid Thesis</a>
       <a href="#request" class="btn-outline-light">Request Research Access</a>
     </div>
+  </div>
+  <figure class="hero-logo anim d2">
+    <picture>
+      <source type="image/webp" srcset="assets/logo-480.webp 480w, assets/logo-800.webp 800w, assets/logo-1024.webp 1024w" sizes="(min-width: 1101px) 30vw, 340px" />
+      <img src="assets/logo-800.jpg" width="1024" height="1024" fetchpriority="high"
+           alt="Sphinx Analysis logo: a pyramid bearing the Eye of Horus, flanked by two golden sphinxes" />
+    </picture>
+  </figure>
   </div>
 </section>
 
