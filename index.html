@@ -34,6 +34,18 @@
     }
   }
   </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Book",
+    "name": "Enemies of the Original Man: A Clinical and Legal Framework for Reparative Justice",
+    "author": { "@type": "Person", "name": "Abdullah Hakim Kenneth Basnight" },
+    "isbn": "9798905503160",
+    "url": "https://enemiesoftheoriginalman.com/",
+    "inLanguage": "en",
+    "workTranslation": { "@type": "Book", "name": "Enemigos del hombre original", "inLanguage": "es" }
+  }
+  </script>
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -170,6 +182,19 @@
     .badge-complete { color: var(--forest); border-color: rgba(26,58,44,0.35); }
     .badge-draft { color: var(--gold); border-color: rgba(184,136,42,0.35); }
     .badge-forthcoming { color: var(--muted-light); border-color: rgba(154,138,106,0.3); }
+    .badge-published { color: #fff; background: var(--forest); border-color: var(--forest); }
+    .badge-serial { color: var(--ink); background: var(--gold); border-color: var(--gold); }
+    .pub-group { font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.24em; text-transform: uppercase; color: var(--gold-dim); margin: 56px 0 4px; }
+    .pub-group:first-of-type { margin-top: 48px; }
+    .pub-group + .pub-list { margin-top: 12px; }
+    .pub-item.featured { background: var(--cream); padding: 32px 28px; border-left: 3px solid var(--gold); }
+    .pub-item.featured + .pub-item.featured { margin-top: 12px; }
+    .pub-links { display: flex; flex-wrap: wrap; gap: 10px 20px; margin-top: 16px; }
+    .pub-links a { font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink); text-decoration: none; border-bottom: 1px solid var(--gold); padding-bottom: 2px; transition: color 0.2s; }
+    .pub-links a:hover { color: var(--gold); }
+    .pub-links a::after { content: ' →'; }
+    .research-link { display: inline-block; margin-top: 18px; font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink); text-decoration: none; border-bottom: 1px solid var(--gold); padding-bottom: 2px; }
+    .research-link:hover { color: var(--gold); }
 
     /* CONTACT / REQUEST */
     #request { background: var(--ink); padding: 100px 60px; }
@@ -226,6 +251,7 @@
       .research-grid, .method-grid { grid-template-columns: 1fr; }
       .evidence-timeline { grid-template-columns: repeat(2, 1fr); gap: 12px; }
       .pub-item { grid-template-columns: 1fr; gap: 8px; }
+      .pub-badge { justify-self: start; }
       .thesis-sidebar { position: static; }
     }
     @media (max-width: 640px) {
@@ -237,6 +263,7 @@
       .nav-parent { padding: 8px 10px; font-size: 9px; }
       .evidence-timeline { grid-template-columns: 1fr; }
       .research-card { padding: 52px 24px 32px; }
+      .pub-item.featured { padding: 24px 20px; }
     }
     @media (max-width: 380px) {
       .nav-logo { font-size: 19px; }
@@ -316,11 +343,12 @@
       <div class="research-desc">Primary source documentation of institutional harm across four centuries — county ledgers, bastardy exclusion records, guardian bonds, apprentice systems, 13th Amendment exception clause application, and Triangulation of Institutional Silence as a documented mechanism of ongoing coercion.</div>
     </div>
     <div class="research-card">
-      <span class="research-status status-wp">WHITEPAPER</span>
+      <span class="research-status status-active">PUBLISHED</span>
       <div class="research-num">PROGRAM — 003</div>
       <h3 class="research-title">PTCS — Clinical & Neuroeducational Framework</h3>
       <div class="research-sub">Post-Colonization Trauma Syndrome</div>
       <div class="research-desc">A proposed diagnostic framework for intergenerational trauma arising from epistemic erasure, synthesizing neuroeducational research, trauma studies, and historical documentation. PTCS is not a diagnosis currently recognized by the DSM; this program develops the evidentiary and clinical case for institutional acknowledgment and future recognition.</div>
+      <a class="research-link" href="#publications">Published in <em>Enemies of the Original Man</em> →</a>
     </div>
     <div class="research-card">
       <span class="research-status status-pending">IN DEVELOPMENT</span>
@@ -480,6 +508,37 @@
 <section id="publications">
   <div class="sec-tag">Research Output</div>
   <h2 class="sec-title">Publications &<br><em>Documentation</em></h2>
+
+  <div class="pub-group">Published Works</div>
+  <div class="pub-list">
+    <div class="pub-item featured">
+      <div class="pub-num">BOOK</div>
+      <div>
+        <h3 class="pub-title"><em>Enemies of the Original Man:</em> A Clinical and Legal Framework for Reparative Justice</h3>
+        <div class="pub-meta">Book · Abdullah Hakim Kenneth Basnight · ISBN 979-8-905503-16-0</div>
+        <div class="pub-desc">A clinical and legal case for reparative justice, moving from theology and history into psychiatry and international law. The book introduces two proposed frameworks, Post-Traumatic Colonization Syndrome (PTCS) and Post-Traumatic Slave Master Syndrome (PTSMS), describing the lasting psychological harm of colonization to both the colonized and the colonizer, and sets out the Diaspora Diagnostic Manual (DDM) as a research agenda. PTCS and PTSMS are proposed frameworks, not diagnoses currently recognized by the DSM. Available in paperback, hardcover, ebook and audiobook, with a Spanish edition, <em>Enemigos del hombre original</em>.</div>
+        <div class="pub-links">
+          <a href="https://enemiesoftheoriginalman.com/" target="_blank" rel="noopener">Book website</a>
+          <a href="https://enemiesoftheoriginalman.com/#buy" target="_blank" rel="noopener">Where to buy</a>
+        </div>
+      </div>
+      <span class="pub-badge badge-published">PUBLISHED</span>
+    </div>
+    <div class="pub-item featured">
+      <div class="pub-num">SERIAL</div>
+      <div>
+        <h3 class="pub-title">The Diaspora Debate</h3>
+        <div class="pub-meta">Serialized Book · Free on Substack · New part every Tuesday from October 27, 2026</div>
+        <div class="pub-desc">A book on the African diaspora, the "Sixth Region," and the question of political belonging, published one part per week on Substack and free to read.</div>
+        <div class="pub-links">
+          <a href="https://kennethbasnight.substack.com/" target="_blank" rel="noopener">Read &amp; subscribe on Substack</a>
+        </div>
+      </div>
+      <span class="pub-badge badge-serial">WEEKLY</span>
+    </div>
+  </div>
+
+  <div class="pub-group">Research Documents</div>
   <div class="pub-list">
     <div class="pub-item">
       <div class="pub-num">DOC-001</div>
@@ -498,15 +557,6 @@
         <div class="pub-desc">Forensic legal analysis tracing the exception clause of the 13th Amendment as a structural mechanism enabling continuation of coerced labor through the criminal punishment framework. Cross-referenced with county-level documentation, incarceration data, and Constitutional Convention records.</div>
       </div>
       <span class="pub-badge badge-draft">DRAFT</span>
-    </div>
-    <div class="pub-item">
-      <div class="pub-num">DOC-003</div>
-      <div>
-        <h3 class="pub-title">PTCS: A Clinical Framework for Post-Colonization Trauma Syndrome</h3>
-        <div class="pub-meta">Clinical Framework · SPHINX Global Enterprises Corp.</div>
-        <div class="pub-desc">Proposed diagnostic criteria for intergenerational trauma arising from epistemic erasure, forced cultural displacement, and documented denial of institutional recognition. Synthesizes trauma studies, neuroeducational research, and historical documentation. Not a diagnosis currently recognized by the DSM — this document builds the evidentiary basis toward a future clinical recognition pathway.</div>
-      </div>
-      <span class="pub-badge badge-draft">IN PREPARATION</span>
     </div>
     <div class="pub-item">
       <div class="pub-num">DOC-004</div>
@@ -611,7 +661,7 @@
             <option value="">Select document</option>
             <option>DOC-001: Digital Apartheid Thesis</option>
             <option>DOC-002: The Reload Mechanism</option>
-            <option>DOC-003: PTCS Clinical Framework</option>
+            <option>Enemies of the Original Man: review / media copy</option>
             <option>DOC-004: SPHINX Method Technical Documentation</option>
             <option>DOC-005: K-12 AI Market Analysis</option>
             <option>Full Research Package</option>
