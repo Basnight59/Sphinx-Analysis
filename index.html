@@ -217,6 +217,7 @@
     .pub-links a { font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink); text-decoration: none; border-bottom: 1px solid var(--gold); padding-bottom: 2px; transition: color 0.2s; }
     .pub-links a:hover { color: var(--gold); }
     .pub-links a::after { content: ' →'; }
+    .pub-links a[data-share]::after { content: ' ↗'; }
     .research-link { display: inline-block; margin-top: 18px; font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink); text-decoration: none; border-bottom: 1px solid var(--gold); padding-bottom: 2px; }
     .research-link:hover { color: var(--gold); }
 
@@ -538,13 +539,13 @@
 </section>
 
 <!-- PUBLICATIONS -->
-<section id="publications">
+<section id="publications" data-share-url="https://enemiesoftheoriginalman.com/" data-share-title="Enemies of the Original Man — Abdullah Hakim Kenneth Basnight" data-share-text="A clinical and legal framework for reparative justice." data-share-label="Share the book">
   <div class="sec-tag">Research Output</div>
   <h2 class="sec-title">Publications &<br><em>Documentation</em></h2>
 
   <div class="pub-group">Published Works</div>
   <div class="pub-list">
-    <div class="pub-item featured">
+    <div class="pub-item featured" data-share-url="https://enemiesoftheoriginalman.com/" data-share-title="Enemies of the Original Man — Abdullah Hakim Kenneth Basnight" data-share-text="A clinical and legal framework for reparative justice." data-share-label="Share the book">
       <div class="pub-num">BOOK</div>
       <div>
         <h3 class="pub-title"><em>Enemies of the Original Man:</em> A Clinical and Legal Framework for Reparative Justice</h3>
@@ -553,11 +554,12 @@
         <div class="pub-links">
           <a href="https://enemiesoftheoriginalman.com/" target="_blank" rel="noopener">Book website</a>
           <a href="https://enemiesoftheoriginalman.com/#buy" target="_blank" rel="noopener">Where to buy</a>
+          <a href="https://enemiesoftheoriginalman.com/" data-share>Share this book</a>
         </div>
       </div>
       <span class="pub-badge badge-published">PUBLISHED</span>
     </div>
-    <div class="pub-item featured">
+    <div class="pub-item featured" data-share-url="https://kennethbasnight.substack.com/" data-share-title="The Diaspora Debate — a serialized book, free on Substack" data-share-label="Share The Diaspora Debate">
       <div class="pub-num">SERIAL</div>
       <div>
         <h3 class="pub-title">The Diaspora Debate</h3>
@@ -565,6 +567,7 @@
         <div class="pub-desc">A book on the African diaspora, the "Sixth Region," and the question of political belonging, published one part per week on Substack and free to read.</div>
         <div class="pub-links">
           <a href="https://kennethbasnight.substack.com/" target="_blank" rel="noopener">Read &amp; subscribe on Substack</a>
+          <a href="https://kennethbasnight.substack.com/" data-share>Share</a>
         </div>
       </div>
       <span class="pub-badge badge-serial">WEEKLY</span>
